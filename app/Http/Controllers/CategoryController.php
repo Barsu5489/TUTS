@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all(['id'. 'title', 'description']);
+        return response()->json($categories);
     }
 
     /**
@@ -28,7 +29,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categories = Category::create($request->post());
+        return response()->json([
+            'message' => 'Category Created Successfully!!',
+            'category' => $categories
+        ]);
     }
 
     /**
@@ -44,7 +49,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return response()->json($category);
     }
 
     /**
@@ -52,7 +57,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $categories->fill($request->post())->save();
+        return response()->json([
+            'message' => 'Category updated successfully!!',
+            'category' => $category
+        ]);
     }
 
     /**
@@ -60,6 +69,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return response()->json([
+            'message' => 'Category Deleted Successfully!!!'
+        ]);
     }
 }
