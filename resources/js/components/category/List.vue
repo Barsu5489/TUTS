@@ -24,7 +24,7 @@
                                 <td>{{category.title}}</td>
                                 <td>{{category.description}}</td>
                                <router-link :to='{name:"CategoryEdit", params:{id:category.id}}' class="btn btn-success">Edit</router-link>
-                               <button type="button" @click="deleteCategory(category.id)" class="btn btn-danger"></button>
+                               <button type="button" @click="deleteCategory(category.id)" class="btn btn-danger">Delete</button>
                             </tr>
                           
                         </tbody>
@@ -53,8 +53,8 @@ export default{
     },
     methods:{
         async getCategories(){
-            await this.axios.get('/api/category').then(resposne=>{
-                this.categories = repsonse.data
+            await this.axios.get('/api/category').then(response=>{
+                this.categories = response.data
             }).catch(error=>{
                 console.log(error)
                 this.categories = []
@@ -62,7 +62,7 @@ export default{
         },
         deleteCategory(id){
             if(confirm("Are you sure you want to delete this category ? ")){
-                this.axios.delete('api/category/${id}').then(response=>{
+                this.axios.delete(`api/category/${id}`).then(response=>{
                     this.getCategories()
                 }).catch(error=>{
                     console.log(error)

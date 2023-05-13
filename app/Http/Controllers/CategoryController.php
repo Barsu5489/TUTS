@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all(['id'. 'title', 'description']);
+        $categories = Category::all(['id', 'title', 'description']);
         return response()->json($categories);
     }
 
@@ -57,7 +57,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $categories->fill($request->post())->save();
+        $category->fill($request->post())->save();
         return response()->json([
             'message' => 'Category updated successfully!!',
             'category' => $category

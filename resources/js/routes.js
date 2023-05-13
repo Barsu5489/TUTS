@@ -14,7 +14,7 @@ export const routes = [
         component: CategoryList
     },
     {
-        name: 'categoryEdit',
+        name: 'CategoryEdit',
         path: '/category/:id/edit',
         component: CategoryEdit
     }, {
@@ -22,4 +22,4 @@ export const routes = [
         path: '/category/add',
         component: CategoryCreate
     }
-]
+]   
