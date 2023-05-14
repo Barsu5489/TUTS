@@ -23,8 +23,8 @@
                                 <td>{{category.id}}</td>
                                 <td>{{category.title}}</td>
                                 <td>{{category.description}}</td>
-                               <router-link :to='{name:"CategoryEdit", params:{id:category.id}}' class="btn btn-success">Edit</router-link>
-                               <button type="button" @click="deleteCategory(category.id)" class="btn btn-danger">Delete</button>
+                               <router-link :to='{name:"CategoryEdit", params:{id:category.id}}' class="btn btn-success" v-bind:style="{ 'background-color': 'green' }">Edit</router-link>
+                               <button type="button" @click="deleteCategory(category.id)" class="btn btn-danger" v-bind:style="{ 'background-color': 'red', 'margin-left':'9px' }">Delete</button>
                             </tr>
                           
                         </tbody>
